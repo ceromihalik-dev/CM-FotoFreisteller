@@ -1,0 +1,28 @@
+# Build output
+bin/
+obj/
+artifacts/
+.vs/
+
+# Bundled/generated runtime
+Runtime/
+Models/
+.u2net/
+*.onnx
+
+# Local settings / caches
+settings.json
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / OS
+.vscode/
+.idea/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# Packages / releases
+*.zip
