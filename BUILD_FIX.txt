@@ -1,0 +1,24 @@
+CM FotoFreisteller V0.2.5 buildfix3
+
+Status:
+- Offline-Engine: PASS
+- Runtime-Erstellung: PASS
+- Fehler entstand beim Löschen eines ALTEN artifacts/full-portable-Baums.
+- PowerShell Remove-Item scheitert an tiefen ONNXRuntime-Pfaden.
+
+Fix:
+- Remove-Item für den Portable-Buildbaum entfernt.
+- Löschen erfolgt jetzt über cmd.exe rmdir mit Win32-Long-Path-Präfix.
+- Fallback: leeres Verzeichnis per robocopy /MIR spiegeln und danach rmdir.
+- Runtime-Kopie weiterhin robocopy.
+- ZIP weiterhin tar.exe mit relativen Pfaden.
+- Keine Änderung an Anwendung oder Bildengine.
+
+Start Entwicklung:
+dotnet run --project .\CMFotoFreisteller\CMFotoFreisteller.csproj
+
+Offline-Engine:
+.\build-offline-engine.bat
+
+Full Portable:
+.\build-full-portable.bat

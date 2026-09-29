@@ -1,0 +1,127 @@
+﻿<Window x:Class="CMFotoFreisteller.SettingsWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Einstellungen – CM FotoFreisteller" Width="650" Height="1080"
+ Background="#F4F6F8" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+ <Grid Margin="20">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="14"/><RowDefinition Height="*"/><RowDefinition Height="14"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel>
+   <TextBlock Text="Einstellungen" FontSize="26" FontWeight="SemiBold"/>
+   <TextBlock Text="Standardwerte für die Bildverarbeitung" Foreground="#667085" Margin="0,4,0,0"/>
+  </StackPanel>
+  <Border Grid.Row="2" Background="White" CornerRadius="14" Padding="18">
+   <StackPanel>
+    <TextBlock Text="Hintergrund" FontSize="17" FontWeight="SemiBold"/>
+    <ComboBox x:Name="BackgroundCombo" Height="34" Margin="0,12,0,0"
+              SelectionChanged="BackgroundCombo_SelectionChanged">
+      <ComboBoxItem Content="Weiß"/>
+      <ComboBoxItem Content="Transparent (PNG)"/>
+      <ComboBoxItem Content="Eigene Farbe"/>
+    </ComboBox>
+
+    <Border x:Name="InlineColorPanel" Margin="0,10,0,0" Background="#F8FAFC"
+            BorderBrush="#E4E7EC" BorderThickness="1" CornerRadius="9" Padding="10">
+     <Grid>
+      <Grid.ColumnDefinitions>
+       <ColumnDefinition Width="44"/><ColumnDefinition Width="10"/>
+       <ColumnDefinition Width="*"/><ColumnDefinition Width="10"/>
+       <ColumnDefinition Width="135"/>
+      </Grid.ColumnDefinitions>
+      <Border x:Name="ColorPreview" Width="42" Height="34" BorderBrush="#D0D5DD"
+              BorderThickness="1" CornerRadius="6" HorizontalAlignment="Left"/>
+      <TextBox Grid.Column="2" x:Name="HexBox" Height="34" VerticalContentAlignment="Center"
+               TextChanged="HexBox_TextChanged"/>
+      <Button Grid.Column="4" x:Name="ColorButton" Content="🎨 Farbpicker"
+              Click="Color_Click" Margin="0" Padding="10,6"/>
+     </Grid>
+    </Border>
+
+    <Separator Margin="0,18"/>
+    <TextBlock Text="Ausgabe" FontSize="17" FontWeight="SemiBold"/>
+    <CheckBox x:Name="MoveOriginalCheck" Content="Original nach erfolgreicher Bearbeitung verschieben" Margin="0,12,0,0"/>
+    <CheckBox x:Name="OpenOutputCheck" Content="Ausgabeordner nach Abschluss öffnen" Margin="0,10,0,0"/>
+    <CheckBox x:Name="AutoRotateCheck" Content="EXIF-Ausrichtung automatisch korrigieren" Margin="0,10,0,0"/>
+
+
+
+    <Separator Margin="0,18"/>
+    <TextBlock Text="Produktfoto / Ausgabegröße" FontSize="17" FontWeight="SemiBold"/>
+    <ComboBox x:Name="SizeCombo" Height="34" Margin="0,12,0,0"
+              SelectionChanged="SizeCombo_SelectionChanged">
+     <ComboBoxItem Content="Miniatur – 256 × 256 px"/>
+     <ComboBoxItem Content="Klein – 400 × 400 px"/>
+     <ComboBoxItem Content="Standard – 600 × 600 px"/>
+     <ComboBoxItem Content="Mittel – 800 × 800 px"/>
+     <ComboBoxItem Content="Groß – 1200 × 1200 px"/>
+     <ComboBoxItem Content="Sehr groß – 1600 × 1600 px"/>
+     <ComboBoxItem Content="Originalgröße"/>
+     <ComboBoxItem Content="Eigene Größe"/>
+    </ComboBox>
+    <Grid x:Name="CustomSizePanel" Margin="0,10,0,0">
+     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="24"/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel>
+      <TextBlock Text="Breite (px)" Foreground="#667085"/>
+      <TextBox x:Name="CustomWidthBox" Height="30" Margin="0,4,0,0"/>
+     </StackPanel>
+     <TextBlock Grid.Column="1" Text="×" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+     <StackPanel Grid.Column="2">
+      <TextBlock Text="Höhe (px)" Foreground="#667085"/>
+      <TextBox x:Name="CustomHeightBox" Height="30" Margin="0,4,0,0"/>
+     </StackPanel>
+    </Grid>
+    <Grid Margin="0,10,0,0">
+     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+     <TextBlock Text="Objektrand (%)" VerticalAlignment="Center"/>
+     <TextBox x:Name="MarginBox" Grid.Column="1" Height="30" VerticalContentAlignment="Center"/>
+    </Grid>
+    <CheckBox x:Name="FitToCanvasCheck" Content="Objekt automatisch auf Zielfläche einpassen" Margin="0,10,0,0"/>
+    <TextBlock Text="Objektbehandlung" FontWeight="SemiBold" Margin="0,14,0,5"/>
+    <ComboBox x:Name="ObjectModeCombo" Height="34">
+     <ComboBoxItem Content="Gesamtes freigestelltes Objekt"/>
+     <ComboBoxItem Content="Hauptobjekt priorisieren"/>
+     <ComboBoxItem Content="Nur größte zusammenhängende Fläche"/>
+    </ComboBox>
+    <TextBlock Text="„Hauptobjekt priorisieren“ berücksichtigt Kabel und dünne Ausläufer, lässt sie die Skalierung aber weniger stark bestimmen."
+               Foreground="#667085" TextWrapping="Wrap" Margin="0,7,0,0"/>
+    <TextBlock Text="Lange Kabel / Ausläufer" FontWeight="SemiBold" Margin="0,14,0,5"/>
+    <ComboBox x:Name="OverflowModeCombo" Height="34">
+     <ComboBoxItem Content="Vollständig einpassen"/>
+     <ComboBoxItem Content="Hauptobjekt groß darstellen"/>
+     <ComboBoxItem Content="Abschneiden zulassen"/>
+    </ComboBox>
+    <TextBlock Text="Vollständig einpassen hält alle erkannten Teile im Bild. Hauptobjekt groß darstellen bevorzugt das Gerät; sehr lange Ausläufer dürfen den Rand erreichen."
+               Foreground="#667085" TextWrapping="Wrap" Margin="0,7,0,0"/>
+    <Separator Margin="0,18"/>
+    <TextBlock Text="Freistellungsqualität" FontSize="17" FontWeight="SemiBold"/>
+    <ComboBox x:Name="QualityModeCombo" Height="34" Margin="0,12,0,0">
+     <ComboBoxItem Content="Schnell"/>
+     <ComboBoxItem Content="Standard"/>
+     <ComboBoxItem Content="Alpha-Matting (experimentell)"/>
+    </ComboBox>
+    <TextBlock Text="Alpha-Matting kann feine Übergänge verbessern, bei manchen Motiven aber auch Säume oder Hintergrundreste erzeugen."
+               Foreground="#667085" TextWrapping="Wrap" Margin="0,7,0,0"/>
+    <TextBlock Text="Maske bereinigen" FontWeight="SemiBold" Margin="0,14,0,5"/>
+    <ComboBox x:Name="MaskCleanupCombo" Height="34">
+     <ComboBoxItem Content="Aus"/>
+     <ComboBoxItem Content="Normal"/>
+     <ComboBoxItem Content="Stark"/>
+    </ComboBox>
+    <TextBlock Text="Entfernt schwach transparente Hintergrundreste und kleine Maskenartefakte nach der Freistellung."
+               Foreground="#667085" TextWrapping="Wrap" Margin="0,7,0,0"/>
+    <Separator Margin="0,18"/>
+    <TextBlock Text="Bildoptimierung" FontSize="17" FontWeight="SemiBold"/>
+    <CheckBox x:Name="OptimizeCheck" Content="Kontrast und Schärfe dezent optimieren" Margin="0,12,0,0"/>
+    <TextBlock Text="Weitere Optionen wie Produktfoto-Modus, Rand und Zielgröße folgen in der nächsten Entwicklungsstufe."
+               Foreground="#667085" TextWrapping="Wrap" Margin="0,12,0,0"/>
+   </StackPanel>
+  </Border>
+  <Grid Grid.Row="4">
+   <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <Button Content="Standardwerte" Click="Defaults_Click"/>
+   <StackPanel Grid.Column="1" Orientation="Horizontal">
+    <Button Content="Abbrechen" Click="Cancel_Click"/>
+    <Button Content="Speichern" Click="Save_Click" Background="#2563EB" Foreground="White" FontWeight="SemiBold"/>
+   </StackPanel>
+  </Grid>
+ </Grid>
+</Window>

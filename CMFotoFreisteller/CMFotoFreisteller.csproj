@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>CMFotoFreisteller</AssemblyName>
+    <RootNamespace>CMFotoFreisteller</RootNamespace>
+    <Version>0.2.5</Version>
+    <AssemblyVersion>0.2.5.0</AssemblyVersion>
+    <FileVersion>0.2.5.0</FileVersion>
+    <InformationalVersion>0.2.5</InformationalVersion>
+    <Product>CM FotoFreisteller</Product>
+    <AssemblyTitle>CM FotoFreisteller</AssemblyTitle>
+    <Description>Lokale Stapel-Freistellung und Aufbereitung von Fotos</Description>
+    <Company>C. Mihalik</Company>
+    <Authors>C. Mihalik</Authors>
+    <Copyright>Copyright © C. Mihalik</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\Engine\foto_engine.py">
+      <Link>Engine\foto_engine.py</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
