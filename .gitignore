@@ -26,3 +26,8 @@ Thumbs.db
 
 # Packages / releases
 *.zip
+
+*.exe
+*.dll
+Runtime/
+artifacts/

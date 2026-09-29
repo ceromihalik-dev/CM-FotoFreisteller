@@ -1,0 +1,14 @@
+﻿CM FotoFreisteller 0.2.5 - Full Portable
+
+Start:
+CMFotoFreisteller.exe
+
+Enthalten:
+- self-contained .NET
+- lokale Python-Laufzeit
+- rembg
+- ONNX Runtime
+- Pillow / NumPy
+- u2net / u2netp Modelle
+
+Für die Bildverarbeitung ist keine separate Python-Installation vorgesehen.
